@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Path - Compra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Access Path</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="compra.html">Compra</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Adquira seu dispositivo Access Path</h2>
+            <p>Ao adquirir nossos produtos ou contribuir com o projeto, você apoia uma iniciativa que promove inclusão, autonomia e igualdade de oportunidades nas instituições de ensino.</p>
+
+            <form id="form-compra">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" placeholder="(xx) xxxxx-xxxx" required>
+
+                <h3>Endereço de Entrega</h3>
+
+                <label for="rua">Rua:</label>
+                <input type="text" id="rua" required>
+
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" required>
+
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" required>
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" required>
+
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" required>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" placeholder="00000-000" required>
+
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" min="1" value="1" required>
+
+                <label for="pagamento">Método de Pagamento:</label>
+                <select id="pagamento" required>
+                    <option value="">Selecione...</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                    <option value="pix">Pix</option>
+                    <option value="boleto">Boleto Bancário</option>
+                </select>
+
+                <button type="submit" class="btn">Confirmar Compra</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Access Path - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
