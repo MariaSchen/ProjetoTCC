@@ -1,2 +1,0 @@
-# ProjetoTCC
-Vita Path Assistant
