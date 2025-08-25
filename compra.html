@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Path - Compra</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <header>
+  <div class="header-top">
+    <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
+      <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
+      <p class="slogan">Tecnologia que abre caminhos</p>
+    </a>
+
+    <nav class="main-nav" aria-label="Principal">
+      <ul>
+        <li><a class="speakable" href="index.html">Início</a></li>
+        <li><a class="speakable" href="quem-somos.html">Quem Somos</a></li>
+        <li><a class="speakable" href="cadastro.html">Cadastro</a></li>
+        <li><a class="speakable" href="compra.html">Compra</a></li>
+        <li><a class="speakable" href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <!-- botão antigo de voz foi removido -->
+  </div>
+</header>
+
+  <main id="conteudo">
+    <!-- Região de mensagens acessíveis -->
+    <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <section class="speakable">
+      <h2>Adquira seu dispositivo Access Path</h2>
+      <p>Ao adquirir nossos produtos ou contribuir com o projeto, você apoia uma iniciativa que promove inclusão, autonomia e igualdade de oportunidades nas instituições de ensino.</p>
+
+      <form id="form-compra">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="name" autocomplete="name" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="tel" inputmode="tel" autocomplete="tel" placeholder="(xx) xxxxx-xxxx" required />
+
+        <fieldset>
+          <legend>Endereço de Entrega</legend>
+
+          <label for="rua">Rua:</label>
+          <input type="text" id="rua" name="address-line1" autocomplete="address-line1" required />
+
+          <label for="numero">Número:</label>
+          <input type="text" id="numero" name="address-line2" autocomplete="address-line2" required />
+
+          <label for="bairro">Bairro:</label>
+          <input type="text" id="bairro" name="address-level3" />
+
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" name="address-level2" autocomplete="address-level2" required />
+
+          <label for="estado">Estado:</label>
+          <input type="text" id="estado" name="address-level1" autocomplete="address-level1" required />
+
+          <label for="cep">CEP:</label>
+          <input type="text" id="cep" name="postal-code" autocomplete="postal-code" inputmode="numeric" pattern="\d{5}-\d{3}" placeholder="00000-000" aria-describedby="cep-ajuda" required />
+          <small id="cep-ajuda" class="sr-only">Digite o CEP no formato 00000-000.</small>
+        </fieldset>
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantity" min="1" step="1" value="1" required />
+
+        <label for="pagamento">Método de Pagamento:</label>
+        <select id="pagamento" name="payment-method" required>
+          <option value="">Selecione...</option>
+          <option value="cartao">Cartão de Crédito</option>
+          <option value="pix">Pix</option>
+          <option value="boleto">Boleto Bancário</option>
+        </select>
+
+        <button type="submit" class="btn">Confirmar Compra</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="speakable">
+    <p>&copy; 2025 Access Path - Todos os direitos reservados</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+    <!-- ... seu conteúdo ... -->
+
+  <!-- [NOVO] Botão de VOZ (mini) e Toast -->
+  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz" aria-pressed="false">🔊</button>
+  <div id="tts-toast" role="status" aria-live="polite"></div>
+
+  <!-- [NOVO] VLibras (oficial) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+/* ==========================
+   Base / Reset
+   ========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --font-scale: 1;             /* 1 = 100% */
+
+  /* Paleta clara (derivada da logo) */
+  --bg: #FFFFFF;               /* fundo branco */
+  --fg: #1E2A3A;               /* texto principal */
+  --muted: #5A6C80;            /* texto secundário */
+
+  /* Cores principais (logo) */
+  --primary: #003080;          /* azul escuro do arco do fone */
+  --primary-weak: #0080C0;     /* azul claro das mãos/acento */
+
+  --surface: #FFFFFF;          /* cartões/superfícies */
+  --focus: #FFC857;            /* foco acessível */
+}
+
+/* Tema escuro (mantém branco como base também, não muda para fundo preto) */
+[data-theme="dark"] {
+  --bg: #FFFFFF;               /* fundo branco mesmo no dark */
+  --fg: #1E2A3A;
+  --muted: #5A6C80;
+
+  --primary: #003080;
+  --primary-weak: #0080C0;
+
+  --surface: #FFFFFF;
+  --focus: #F59E0B;
+}
+
+/* Pref. do sistema (dark) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #FFFFFF;             /* mantém branco sempre */
+    --fg: #1E2A3A;
+    --muted: #5A6C80;
+
+    --primary: #003080;
+    --primary-weak: #0080C0;
+
+    --surface: #FFFFFF;
+    --focus: #F59E0B;
+  }
+}
+
+/* Corpo */
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  font-size: calc(100% * var(--font-scale));
+}
+
+/* Foco visível para elementos navegáveis */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Skip link (não esconda para manter acessibilidade) */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -40px;
+  background: var(--focus);
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: top .2s;
+  z-index: 1000;
+}
+.skip-link:focus { top: 8px; }
+
+/* ==========================
+   Header compacto + menu ao lado da logo
+   ========================== */
+header {
+  padding-block: 8px;
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+header .logo {
+  max-width: 110px;
+  height: auto;
+}
+
+header .slogan {
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--primary-weak);
+  line-height: 1.1;
+}
+
+/* Nav ao lado da logo */
+header .main-nav { margin: 0; }
+
+header .main-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header .main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background-color .2s ease;
+}
+header .main-nav a:hover { background-color: rgba(255,255,255,.15); }
+
+/* ==========================
+   Barra de acessibilidade fixa e vertical
+   ========================== */
+.access-toolbar {
+  position: fixed;
+  inset-block-start: 120px;
+  inset-inline-end: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+  padding: 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.btn-access {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  border-radius: 12px;
+  appearance: none;
+  background: rgba(255,255,255,0.9);
+  color: #111;
+  border: 0;
+  cursor: pointer;
+}
+.btn-access[aria-pressed="true"] {
+  outline: 3px solid var(--focus);
+}
+
+/* ==========================
+   Main / Seções
+   ========================== */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Hero */
+.hero {
+  background-color: #E9F4FA;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+.hero p { font-size: 1.1rem; color: var(--muted); }
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.card {
+  background-color: var(--surface);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.card h3 { margin-bottom: 10px; color: var(--primary); }
+.card p { font-size: 0.95rem; color: var(--muted); margin-bottom: 15px; }
+
+/* Botão */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn:hover { background-color: var(--primary-weak); }
+
+/* Formulários */
+form {
+  background-color: var(--surface);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+form label { display: block; margin: 15px 0 5px; font-weight: 500; }
+form input, form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--fg);
+}
+form textarea { resize: vertical; }
+form button { margin-top: 20px; width: 100%; }
+
+/* Seções de texto */
+section h2 { color: var(--primary); margin-bottom: 15px; font-size: 1.6rem; }
+section p { margin-bottom: 15px; color: var(--muted); }
+
+/* Footer */
+footer {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ==========================
+   Carrossel com fade (full width)
+   ========================== */
+.carousel-fade {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  margin: -40px calc(50% - 50vw) 0;
+  border-radius: 0;
+  aspect-ratio: 1879 / 624;
+  background: #000;
+}
+.carousel-fade .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+.carousel-fade .slide.active { opacity: 1; z-index: 1; }
+.carousel-fade .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+/* Botões de navegação */
+.carousel-fade button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+.carousel-fade button:hover { background-color: rgba(0,0,0,0.7); }
+.carousel-fade .prev { left: 15px; }
+.carousel-fade .next { right: 15px; }
+
+/* Indicadores */
+.carousel-fade .indicators {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+.carousel-fade .dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  display: inline-block;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 0;
+}
+.carousel-fade .dot.active { background-color: rgba(255,255,255,0.9); }
+
+/* Menos animações se preferido pelo usuário */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .slide { transition: none; }
+}
+
+/* ==========================
+   Utilidades
+   ========================== */
+.reading-enabled .speakable { cursor: pointer; }
+.reading-enabled .speakable:hover { text-decoration: underline; }
+
+/* Elementos apenas para leitores de tela */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 1px, 1px);
+  white-space: nowrap; border: 0;
+}
+
+/* ==========================
+   Responsividade
+   ========================== */
+@media (max-width: 768px) {
+  .header-top { flex-wrap: wrap; gap: 10px; }
+  .brand { width: 100%; }
+  header .main-nav { width: 100%; }
+  header .main-nav ul {
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .access-toolbar {
+    inset-block-start: auto;
+    inset-block-end: 16px;
+    inset-inline-end: 12px;
+    flex-direction: row;
+    border-radius: 999px;
+  }
+}
+
+/* ===== Botão de VOZ mini e Toast (acima do VLibras) ===== */
+#tts-mini{
+  position: fixed;
+  right: 20px; bottom: 180px;
+  width: 44px; height: 44px;
+  border-radius: 9999px; border: none;
+  background: #2563eb; color: #fff; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  cursor: pointer; z-index: 2147483647;
+  transition: transform .15s ease, background .2s ease;
+}
+#tts-mini:hover{ background:#1e40af; transform: translateY(-1px); }
+#tts-mini:active{ transform: translateY(0); }
+#tts-mini[aria-pressed="true"]{ background:#ef4444; }
+
+#tts-toast{
+  position: fixed;
+  right: 20px; bottom: 232px;
+  max-width: 260px; padding: 10px 12px; font-size: 14px;
+  background:#111827; color:#fff; border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  opacity:0; pointer-events:none; transition: opacity .2s ease;
+  z-index:2147483647;
+}
+#tts-toast.show{ opacity:.95; }

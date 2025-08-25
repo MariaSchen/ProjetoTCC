@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Path - Quem Somos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+  <div class="header-top">
+    <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
+      <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
+      <p class="slogan">Tecnologia que abre caminhos</p>
+    </a>
+
+    <nav class="main-nav" aria-label="Principal">
+      <ul>
+        <li><a class="speakable" href="index.html">Início</a></li>
+        <li><a class="speakable" href="quem-somos.html">Quem Somos</a></li>
+        <li><a class="speakable" href="cadastro.html">Cadastro</a></li>
+        <li><a class="speakable" href="compra.html">Compra</a></li>
+        <li><a class="speakable" href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <!-- botão antigo de voz foi removido -->
+  </div>
+</header>
+
+
+  <main id="conteudo">
+    <!-- Região de mensagens acessíveis -->
+    <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <section class="speakable">
+      <h2>Problematização</h2>
+      <p>
+        A acessibilidade ainda representa um grande desafio em instituições de ensino, especialmente quando se trata de pessoas com deficiência visual ou baixa mobilidade.
+        A circulação dentro de espaços como escolas, universidades e centros de formação pode se tornar um obstáculo diário para esses indivíduos, uma vez que a sinalização visual, os mapas e até mesmo a orientação espacial oral, muitas vezes, não são suficientes para garantir autonomia e segurança.
+        Nesse contexto, a falta de recursos tecnológicos inclusivos contribui para que esses alunos e visitantes se sintam dependentes de terceiros, reforçando barreiras sociais e limitando sua independência.
+      </p>
+    </section>
+
+    <section class="speakable">
+      <h2>Proposta de Solução</h2>
+      <p>
+        O Access Path é um sistema baseado em Internet das Coisas (IoT) e computação em nuvem, capaz de mapear ambientes por meio de sensores RFID e oferecer orientação auditiva em tempo real.
+        O protótipo utiliza um ESP32 conectado a um leitor RFID e a um fone de ouvido. As áreas são sinalizadas com tags RFID, cada uma com um identificador único. Quando detectado pelo dispositivo, o código é enviado ao servidor, que identifica o local e envia a informação de volta ao usuário.
+      </p>
+      <p>
+        Assim, o ESP32 transmite por áudio mensagens como: “Você está no refeitório”, “Você está na biblioteca” ou “Você está na sala 102”, promovendo autonomia e segurança.
+      </p>
+    </section>
+
+    <section class="speakable">
+      <h2>Motivação</h2>
+      <p>
+        A motivação surgiu ao percebermos que a acessibilidade ainda é tratada como secundária nas instituições de ensino, quando deveria ser central.
+        Ao observar as dificuldades de pessoas com deficiência no dia a dia, vimos que a tecnologia poderia reduzir desigualdades e aumentar a independência.
+        Este projeto também permite aplicar conceitos de programação, eletrônica e banco de dados em um trabalho com propósito social.
+      </p>
+    </section>
+
+    <section class="speakable">
+      <h2>Importância</h2>
+      <p>
+        O projeto promove inclusão e igualdade de oportunidades dentro do ambiente escolar.
+        A acessibilidade não deve ser vista como benefício restrito, mas como direito de todos.
+        Ao orientar alunos e visitantes com deficiência visual, contribuímos para uma escola mais justa, moderna e comprometida com a diversidade.
+        Além disso, há relevância acadêmica e tecnológica, envolvendo IoT, desenvolvimento de APIs, integração de hardware e software e aplicação prática de linguagens de programação e banco de dados.
+      </p>
+    </section>
+
+    <section class="speakable">
+      <h2>Conclusão</h2>
+      <p>
+        Este projeto busca atender a demandas técnicas e acadêmicas, mas também contribuir de forma significativa para a inclusão social no ambiente escolar.
+        Com o desenvolvimento do Access Path, esperamos oferecer um recurso inovador que amplie as possibilidades de aprendizado, participação e convivência para todos, tornando a escola um espaço verdadeiramente acessível.
+      </p>
+    </section>
+  </main>
+
+  <footer class="speakable">
+    <p>&copy; 2025 Access Path - Todos os direitos reservados</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+    <!-- ... seu conteúdo ... -->
+
+  <!-- [NOVO] Botão de VOZ (mini) e Toast -->
+  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz" aria-pressed="false">🔊</button>
+  <div id="tts-toast" role="status" aria-live="polite"></div>
+
+  <!-- [NOVO] VLibras (oficial) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

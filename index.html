@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acess Path - Página Inicial</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ESTILOS apenas da seção Blog (pode mover para style.css se quiser) -->
+  <style>
+    /* layout editorial: lista, sem cartões quadrados */
+    .blog-area { margin-top: 40px; }
+    .blog-header {
+      display:flex; align-items:baseline; gap:.75rem; margin-bottom: 8px;
+    }
+    .blog-header h2 { color: var(--primary); font-size: 1.6rem; }
+    .blog-lead { color: var(--muted); margin-bottom: 16px; }
+
+    .post-list {
+      display: grid;
+      gap: 8px;
+    }
+    /* toda a linha vira link; nada de “cardzão” */
+    .post-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      text-decoration: none;
+      color: var(--fg);
+      background: linear-gradient(to right, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+      padding: 14px 16px;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary-weak);
+      transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+    }
+    .post-item:hover, .post-item:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(0,0,0,0.04);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      outline: 3px solid var(--focus);
+      outline-offset: 0;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      font-size: .9rem; color: var(--muted);
+    }
+    .post-kicker {
+      font-size: .78rem; font-weight: 600;
+      padding: 4px 8px; border-radius: 999px;
+      background: rgba(0,0,0,0.06); color: var(--fg);
+    }
+    .post-title { font-weight: 700; color: var(--fg); }
+    .post-desc { color: var(--muted); margin-top: 4px; }
+    .post-cta {
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: .9;
+    }
+    .post-cta::after { content: "↗"; margin-left: .4rem; }
+
+    /* acessibilidade do ícone */
+    .sr-only {
+      position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,1px,1px);white-space:nowrap;border:0;
+    }
+
+    @media (max-width: 640px){
+      .post-item { grid-template-columns: 1fr; }
+      .post-cta { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <div class="header-top">
+    <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
+      <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
+      <p class="slogan">Tecnologia que abre caminhos</p>
+    </a>
+
+    <nav class="main-nav" aria-label="Principal">
+      <ul>
+        <li><a class="speakable" href="index.html">Início</a></li>
+        <li><a class="speakable" href="quem-somos.html">Quem Somos</a></li>
+        <li><a class="speakable" href="cadastro.html">Cadastro</a></li>
+        <li><a class="speakable" href="compra.html">Compra</a></li>
+        <li><a class="speakable" href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <!-- botão antigo de voz foi removido -->
+  </div>
+</header>
+
+
+  <main id="conteudo">
+    <!-- Região para mensagens de status acessíveis -->
+    <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Carrossel com fade -->
+    <section class="carousel-fade" aria-roledescription="carrossel" aria-label="Destaques">
+      <div class="slide active">
+        <img src="imagens/1.png" alt="" />
+      </div>
+      <div class="slide">
+        <img src="imagens/2.png" alt="" />
+      </div>
+
+      <button class="prev" type="button" aria-label="Slide anterior">&#10094;</button>
+      <button class="next" type="button" aria-label="Próximo slide">&#10095;</button>
+
+      <!-- Indicadores de bolinhas -->
+      <div class="indicators" role="tablist" aria-label="Indicadores do carrossel">
+        <button class="dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button class="dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+      </div>
+    </section>
+    <br>
+
+    <!-- Seção Hero -->
+    <section class="hero speakable">
+      <h2>Navegue com autonomia</h2>
+      <p>O Acess Path é um dispositivo com RFID integrado em fones, que guia pessoas com deficiência visual em hospitais, shoppings e outros ambientes.</p>
+      <a href="quem-somos.html" class="btn">Conheça Mais</a>
+    </section>
+
+    <!-- Seção Benefícios -->
+    <section class="beneficios speakable">
+      <center><h2>Por que escolher o Acess Path?</h2></center>
+      <div class="cards">
+        <div class="card">
+          <h3>Acessibilidade</h3>
+          <p>Guias por áudio direto nos fones para navegação em ambientes complexos.</p>
+        </div>
+        <div class="card">
+          <h3>Tecnologia RFID</h3>
+          <p>Localização precisa em hospitais, shoppings, escolas e empresas.</p>
+        </div>
+        <div class="card">
+          <h3>Segurança</h3>
+          <p>Permite trajetos confiáveis e independentes, sem riscos de se perder.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         BLOG (editorial, sem blocos quadrados)
+         ============================ -->
+    <section id="blog" class="blog-area speakable" aria-labelledby="blog-title">
+      <div class="blog-header">
+        <h2 id="blog-title">Blog • Acessibilidade & Inclusão</h2>
+        <span class="post-kicker" aria-hidden="true">Atualizado</span>
+      </div>
+      <p class="blog-lead">
+        Seleção de leituras essenciais sobre acessibilidade, notícias e inclusão. Todos os links abrem em nova aba.
+      </p>
+
+      <div class="post-list" role="list">
+        <!-- 1) Importância / WCAG (W3C) -->
+        <a class="post-item" role="listitem"
+           href="https://www.w3.org/WAI/standards-guidelines/wcag/"
+           target="_blank" rel="noopener"
+           aria-label="Por que acessibilidade importa? Conheça as diretrizes WCAG, abre em nova aba">
+          <div>
+            <div class="post-meta">
+              <span class="post-kicker">Guia</span>
+              <time datetime="2025-02-01">1 fev 2025</time>
+              <span>• W3C WAI</span>
+            </div>
+            <div class="post-title">Por que acessibilidade importa? Comece pelas WCAG</div>
+            <div class="post-desc">Entenda princípios e critérios (WCAG 2.2) para tornar sites e apps utilizáveis por todos.</div>
+          </div>
+          <div class="post-cta" aria-hidden="true">Ler no W3C</div>
+        </a>
+
+        <!-- 2) Notícias / Apple (Newsroom) -->
+        <a class="post-item" role="listitem"
+           href="https://www.apple.com/newsroom/2025/05/apple-unveils-powerful-accessibility-features-coming-later-this-year/"
+           target="_blank" rel="noopener"
+           aria-label="Novos recursos de acessibilidade da Apple, abre em nova aba">
+          <div>
+            <div class="post-meta">
+              <span class="post-kicker">Notícias</span>
+              <time datetime="2025-05-13">13 mai 2025</time>
+              <span>• Apple Newsroom</span>
+            </div>
+            <div class="post-title">Apple anuncia novos recursos de acessibilidade</div>
+            <div class="post-desc">Braille Access, melhorias de lupa e rótulos de acessibilidade na App Store.</div>
+          </div>
+          <div class="post-cta" aria-hidden="true">Ler na Apple</div>
+        </a>
+
+        <!-- 3) Base legal no Brasil (Planalto/LBI) -->
+        <a class="post-item" role="listitem"
+           href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm"
+           target="_blank" rel="noopener"
+           aria-label="Lei Brasileira de Inclusão Lei 13.146, abre em nova aba">
+          <div>
+            <div class="post-meta">
+              <span class="post-kicker">Legislação</span>
+              <time datetime="2015-07-06">6 jul 2015</time>
+              <span>• Planalto</span>
+            </div>
+            <div class="post-title">Lei Brasileira de Inclusão (Lei nº 13.146/2015)</div>
+            <div class="post-desc">Marco legal da acessibilidade e inclusão no Brasil — referência para ambientes físicos e digitais.</div>
+          </div>
+          <div class="post-cta" aria-hidden="true">Ler no Planalto</div>
+        </a>
+
+        <!-- 4) Políticas de Acessibilidade no Brasil (WAI) -->
+        <a class="post-item" role="listitem"
+           href="https://www.w3.org/WAI/policies/brazil/"
+           target="_blank" rel="noopener"
+           aria-label="Políticas de Acessibilidade: Brasil, W3C WAI, abre em nova aba">
+          <div>
+            <div class="post-meta">
+              <span class="post-kicker">Referência</span>
+              <time datetime="2024-01-01">2024</time>
+              <span>• W3C WAI</span>
+            </div>
+            <div class="post-title">Panorama de políticas de acessibilidade no Brasil</div>
+            <div class="post-desc">Compilado do W3C WAI com leis e normas de acessibilidade aplicáveis no país.</div>
+          </div>
+          <div class="post-cta" aria-hidden="true">Ver no WAI</div>
+        </a>
+
+        <!-- 5) Pesquisa WebAIM (tendências leitores de tela) -->
+        <a class="post-item" role="listitem"
+           href="https://webaim.org/projects/screenreadersurvey10/"
+           target="_blank" rel="noopener"
+           aria-label="WebAIM Screen Reader User Survey 10, abre em nova aba">
+          <div>
+            <div class="post-meta">
+              <span class="post-kicker">Pesquisa</span>
+              <time datetime="2024-12-01">2024</time>
+              <span>• WebAIM</span>
+            </div>
+            <div class="post-title">Tendências de uso de leitores de tela</div>
+            <div class="post-desc">Preferências e hábitos de usuários de NVDA, JAWS, VoiceOver e mais.</div>
+          </div>
+          <div class="post-cta" aria-hidden="true">Ler na WebAIM</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="speakable">
+    <p>&copy; 2025 Acess Path - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+    <!-- ... seu conteúdo ... -->
+
+  <!-- [NOVO] Botão de VOZ (mini) e Toast -->
+  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz" aria-pressed="false">🔊</button>
+  <div id="tts-toast" role="status" aria-live="polite"></div>
+
+  <!-- [NOVO] VLibras (oficial) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+
+</body>
+</html>
