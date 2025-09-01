@@ -9,73 +9,159 @@
 <body>
 
   <header>
-  <div class="header-top">
-    <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
-      <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
-      <p class="slogan">Tecnologia que abre caminhos</p>
-    </a>
+    <div class="header-top">
+      <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
+        <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
+        <p class="slogan">Tecnologia que abre caminhos</p>
+      </a>
 
-    <nav class="main-nav" aria-label="Principal">
-      <ul>
-        <li><a class="speakable" href="index.html">Início</a></li>
-        <li><a class="speakable" href="quem-somos.html">Quem Somos</a></li>
-        <li><a class="speakable" href="cadastro.html">Cadastro</a></li>
-        <li><a class="speakable" href="compra.html">Compra</a></li>
-        <li><a class="speakable" href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-    <!-- botão antigo de voz foi removido -->
-  </div>
-</header>
+      <nav class="main-nav" aria-label="Principal">
+        <ul>
+          <li><a class="speakable" href="index.html">Início</a></li>
+          <li><a class="speakable" href="quem-somos.html">Quem Somos</a></li>
+          <li><a class="speakable" href="cadastro.html">Cadastro</a></li>
+          <li><a class="speakable" href="compra.html">Compra</a></li>
+          <li><a class="speakable" href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+  </header>
 
 
   <main id="conteudo">
-    <!-- Região de mensagens acessíveis -->
-    <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-    <section class="speakable">
-      <h2>Faça parte do Access Path</h2>
-      <p>Cadastre-se e acompanhe o desenvolvimento do nosso projeto, pensado para transformar a inclusão nas escolas e espaços públicos.</p>
+  <!-- Hero compacto com degradê -->
+  <section class="hero hero-cadastro" aria-labelledby="cad-title">
+    <h2 id="cad-title">Acesse sua conta</h2>
+    <p>Crie seu cadastro ou entre com sua conta para liberar a <strong>calculadora de orçamento</strong>.</p>
+  </section>
 
-      <form id="form-cadastro">
-        <label for="nome">Nome Completo:</label>
-        <input type="text" id="nome" name="name" autocomplete="name" required />
+  <!-- Grid: formulário (esq) + lateral informativa (dir) -->
+  <section class="cad-grid" aria-label="Área de acesso">
+    <!-- Cartão com ABAS -->
+    <div class="tabs form-elevada" role="region" aria-label="Formulários de acesso">
+      <div role="tablist" aria-label="Escolha entre criar conta ou entrar" class="tablist">
+        <button role="tab" id="tab-signup" aria-controls="panel-signup" aria-selected="true" class="tab is-active">
+          Criar conta
+        </button>
+        <button role="tab" id="tab-login" aria-controls="panel-login" aria-selected="false" class="tab">
+          Já tenho uma conta
+        </button>
+      </div>
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" autocomplete="email" required />
+      <!-- Painel: CRIAR CONTA -->
+      <div id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" class="tabpanel" tabindex="0">
+        <form id="form-cadastro-signup" class="cad-form" novalidate>
+          <div class="grid-2">
+            <div class="field">
+              <label for="su-nome">Nome completo <span class="req">*</span></label>
+              <input id="su-nome" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="su-telefone">Telefone</label>
+              <input id="su-telefone" name="tel" inputmode="tel" autocomplete="tel" placeholder="(xx) xxxxx-xxxx" />
+            </div>
+          </div>
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="new-password" autocomplete="new-password" required />
+          <div class="grid-2">
+            <div class="field">
+              <label for="su-email">E-mail <span class="req">*</span></label>
+              <input id="su-email" type="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="su-email-conf">Confirmar e-mail <span class="req">*</span></label>
+              <input id="su-email-conf" type="email" autocomplete="email" required />
+            </div>
+          </div>
 
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="tel" inputmode="tel" placeholder="(xx) xxxxx-xxxx" aria-describedby="tel-ajuda" />
-        <small id="tel-ajuda" class="sr-only">Formato sugerido: DDD e número, por exemplo, (11) 91234-5678.</small>
+          <div class="grid-2">
+            <div class="field field-pwd">
+              <label for="su-senha">Senha <span class="req">*</span></label>
+              <input id="su-senha" type="password" name="password" autocomplete="new-password" minlength="6" required />
+              <button type="button" class="pwd-toggle" aria-pressed="false" title="Mostrar/ocultar senha" data-toggle="password" data-target="su-senha">👁️</button>
+              <span class="hint">Mínimo 6 caracteres</span>
+            </div>
+            <div class="field field-pwd">
+              <label for="su-senha-conf">Confirmar senha <span class="req">*</span></label>
+              <input id="su-senha-conf" type="password" autocomplete="new-password" minlength="6" required />
+              <button type="button" class="pwd-toggle" aria-pressed="false" title="Mostrar/ocultar senha" data-toggle="password" data-target="su-senha-conf">👁️</button>
+            </div>
+          </div>
 
-        <button type="submit" class="btn">Cadastrar</button>
-      </form>
-    </section>
-  </main>
+          <label class="checkbox">
+            <input type="checkbox" id="su-termos" required />
+            <span>Li e concordo com os termos de uso.</span>
+          </label>
+
+          <button class="btn" type="submit">Criar conta</button>
+          <p class="hint" style="margin-top:10px">Já tem conta?
+            <a href="#" id="link-go-login">Entrar</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Painel: LOGIN -->
+      <div id="panel-login" role="tabpanel" aria-labelledby="tab-login" class="tabpanel" tabindex="0" hidden>
+        <form id="form-cadastro-login" class="cad-form" novalidate>
+          <div class="field">
+            <label for="li-email">E-mail <span class="req">*</span></label>
+            <input id="li-email" type="email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field field-pwd">
+            <label for="li-senha">Senha <span class="req">*</span></label>
+            <input id="li-senha" type="password" name="password" autocomplete="current-password" required />
+            <button type="button" class="pwd-toggle" aria-pressed="false" title="Mostrar/ocultar senha" data-toggle="password" data-target="li-senha">👁️</button>
+          </div>
+
+          <div class="field-meta">
+            <a href="#" class="hint">Esqueci minha senha</a>
+          </div>
+
+          <button class="btn" type="submit">Entrar</button>
+          <p class="hint" style="margin-top:10px">Novo por aqui?
+            <a href="#" id="link-go-signup">Criar conta</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Lateral informativa -->
+    <aside class="cad-aside card speakable" aria-label="Informações">
+      <div class="cad-aside-kicker">Por que criar uma conta?</div>
+      <h3>Seu acesso libera a <span class="txt-gradient">calculadora de orçamento</span></h3>
+      <ul class="benef-list">
+        <li>🔓 Acesso à estimativa por ambiente e m²</li>
+        <li>📄 Histórico dos seus orçamentos</li>
+        <li>💬 Acompanhamento do projeto</li>
+        <li>🔔 Avisos sobre atualizações</li>
+      </ul>
+      <div class="cad-aside-note">
+        <p><strong>Privacidade:</strong> seus dados serão usados apenas para contato e orçamento.</p>
+      </div>
+    </aside>
+  </section>
+</main>
+
 
   <footer class="speakable">
     <p>&copy; 2025 Access Path - Todos os direitos reservados</p>
   </footer>
 
-  <script src="script.js" defer></script>
-    <!-- ... seu conteúdo ... -->
-
-  <!-- [NOVO] Botão de VOZ (mini) e Toast -->
-  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz" aria-pressed="false">🔊</button>
+  <!-- Botão de VOZ (fica ACIMA do VLibras) + toast -->
+  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz">🔊</button>
   <div id="tts-toast" role="status" aria-live="polite"></div>
 
-  <!-- [NOVO] VLibras (oficial) -->
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
+  <!-- VLibras (oficial) -->
+  <div vw class="enabled" aria-label="Ativar tradução para Libras">
+    <div vw-access-button class="active" role="button" aria-label="Abrir tradutor VLibras"></div>
     <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+      <div class="vw-plugin-top-wrapper" aria-live="polite" aria-atomic="true"></div>
     </div>
   </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
   <script src="script.js" defer></script>
+  
 </body>
 </html>
