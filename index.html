@@ -5,93 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acess Path - Página Inicial</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- ESTILOS apenas da seção Blog (pode mover para style.css se quiser) -->
-  <style>
-    /* layout editorial: lista, sem cartões quadrados */
-    .blog-area { margin-top: 40px; }
-    .blog-header {
-      display:flex; align-items:baseline; gap:.75rem; margin-bottom: 8px;
-    }
-    .blog-header h2 { color: var(--primary); font-size: 1.6rem; }
-    .blog-lead { color: var(--muted); margin-bottom: 16px; }
-
-    .post-list {
-      display: grid;
-      gap: 8px;
-    }
-    /* toda a linha vira link; nada de “cardzão” */
-    .post-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: center;
-      text-decoration: none;
-      color: var(--fg);
-      background: linear-gradient(to right, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
-      padding: 14px 16px;
-      border-radius: 12px;
-      border-left: 4px solid var(--primary-weak);
-      transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease;
-    }
-    .post-item:hover, .post-item:focus-visible {
-      transform: translateY(-1px);
-      background: rgba(0,0,0,0.04);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      outline: 3px solid var(--focus);
-      outline-offset: 0;
-    }
-    .post-meta {
-      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
-      font-size: .9rem; color: var(--muted);
-    }
-    .post-kicker {
-      font-size: .78rem; font-weight: 600;
-      padding: 4px 8px; border-radius: 999px;
-      background: rgba(0,0,0,0.06); color: var(--fg);
-    }
-    .post-title { font-weight: 700; color: var(--fg); }
-    .post-desc { color: var(--muted); margin-top: 4px; }
-    .post-cta {
-      font-weight: 600;
-      white-space: nowrap;
-      opacity: .9;
-    }
-    .post-cta::after { content: "↗"; margin-left: .4rem; }
-
-    /* acessibilidade do ícone */
-    .sr-only {
-      position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,1px,1px);white-space:nowrap;border:0;
-    }
-
-    @media (max-width: 640px){
-      .post-item { grid-template-columns: 1fr; }
-      .post-cta { justify-self: start; }
-    }
-  </style>
+  <!-- Seu JS principal (carrossel, formulários e TTS). Carrega assíncrono. -->
+  <script src="script.js" defer></script>
 </head>
 <body>
 
   <header>
-  <div class="header-top">
-    <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
-      <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
-      <p class="slogan">Tecnologia que abre caminhos</p>
-    </a>
+    <div class="header-top">
+      <a href="index.html" class="brand" aria-label="Página inicial Acess Path">
+        <img src="imagens/logo_access.png" alt="Logo Acess Path" class="logo" />
+        <p class="slogan">Tecnologia que abre caminhos</p>
+      </a>
 
-    <nav class="main-nav" aria-label="Principal">
-      <ul>
-        <li><a class="speakable" href="index.html">Início</a></li>
-        <li><a class="speakable" href="quem-somos.html">Quem Somos</a></li>
-        <li><a class="speakable" href="cadastro.html">Cadastro</a></li>
-        <li><a class="speakable" href="compra.html">Compra</a></li>
-        <li><a class="speakable" href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-    <!-- botão antigo de voz foi removido -->
-  </div>
-</header>
-
+      <nav class="main-nav" aria-label="Principal">
+        <ul>
+          <!-- removida a classe 'speakable' dos links para evitar leitura ao navegar -->
+          <li><a href="index.html">Início</a></li>
+          <li><a href="quem-somos.html">Quem Somos</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+          <li><a href="compra.html">Compra</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div> <!-- ✅ fecha .header-top -->
+  </header>
 
   <main id="conteudo">
     <!-- Região para mensagens de status acessíveis -->
@@ -125,23 +62,32 @@
     </section>
 
     <!-- Seção Benefícios -->
-    <section class="beneficios speakable">
-      <center><h2>Por que escolher o Acess Path?</h2></center>
-      <div class="cards">
-        <div class="card">
-          <h3>Acessibilidade</h3>
-          <p>Guias por áudio direto nos fones para navegação em ambientes complexos.</p>
-        </div>
-        <div class="card">
-          <h3>Tecnologia RFID</h3>
-          <p>Localização precisa em hospitais, shoppings, escolas e empresas.</p>
-        </div>
-        <div class="card">
-          <h3>Segurança</h3>
-          <p>Permite trajetos confiáveis e independentes, sem riscos de se perder.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Seção Benefícios -->
+<section class="beneficios speakable">
+  <center><h2>Por que escolher o Acess Path?</h2></center>
+
+  <div class="cards">
+    <div class="card">
+      <span class="ico ico-acess" role="img" aria-label="Acessibilidade"></span>
+      <h3>Acessibilidade</h3>
+      <p>Guias por áudio direto nos fones para navegação em ambientes complexos.</p>
+    </div>
+
+    <div class="card">
+      <span class="ico ico-rfid" role="img" aria-label="Tecnologia RFID"></span>
+      <h3>Tecnologia RFID</h3>
+      <p>Localização precisa em hospitais, shoppings, escolas e empresas.</p>
+    </div>
+
+    <div class="card">
+      <span class="ico ico-seguranca" role="img" aria-label="Segurança"></span>
+      <h3>Segurança</h3>
+      <p>Permite trajetos confiáveis e independentes, sem riscos de se perder.</p>
+    </div>
+  </div>
+</section>
+
+
 
     <!-- ============================
          BLOG (editorial, sem blocos quadrados)
@@ -246,27 +192,21 @@
 
   <footer class="speakable">
     <p>&copy; 2025 Acess Path - Todos os direitos reservados.</p>
-  </footer>
+  </footer> 
 
-  <script src="script.js" defer></script>
-    <!-- ... seu conteúdo ... -->
-
-  <!-- [NOVO] Botão de VOZ (mini) e Toast -->
-  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz" aria-pressed="false">🔊</button>
+  <!-- Botão de VOZ (fica ACIMA do VLibras) + toast -->
+  <button id="tts-mini" type="button" title="Leitor de voz" aria-label="Leitor de voz">🔊</button>
   <div id="tts-toast" role="status" aria-live="polite"></div>
 
-  <!-- [NOVO] VLibras (oficial) -->
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
+  <!-- VLibras (oficial) -->
+  <div vw class="enabled" aria-label="Ativar tradução para Libras">
+    <div vw-access-button class="active" role="button" aria-label="Abrir tradutor VLibras"></div>
     <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+      <div class="vw-plugin-top-wrapper" aria-live="polite" aria-atomic="true"></div>
     </div>
   </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="script.js" defer></script>
-</body>
-</html>
 
 </body>
 </html>
